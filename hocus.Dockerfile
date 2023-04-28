@@ -30,9 +30,8 @@ RUN sudo apt-get update \
     && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-# run the docker daemon
-RUN sudo service docker start
-RUN sudo usermod -aG docker docker
+# start the docker daemon by using the sock file
+COPY --chown=docker:docker /var/run/docker.sock /var/run/docker.sock
 
 # Run docker compose
 WORKDIR /home/docker
