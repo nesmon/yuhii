@@ -1,0 +1,28 @@
+services:
+  node:
+    build:
+      context: .
+      target: yuhii_node
+    volumes:
+      - .:/home/docker
+    user: 
+      1000:1000
+    ports:
+      - 3000:3000
+    command: node /home/docker/app.js
+
+  db:
+      build:
+          context: .
+          dockerfile: ./docker/db/Dockerfile
+      ports:
+          - "727:5432"
+      environment:
+          POSTGRES_PASSWORD: yuhii
+          POSTGRES_USER: yuhii
+          POSTGRES_DB: yuhii
+      volumes:
+          - db:/var/lib/postgresql/data
+
+volumes:
+    db: {}
