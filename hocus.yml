@@ -3,12 +3,9 @@ image:
   # The Dockerfile MUST extend `hocusdev/workspace`.
   file: Dockerfile
 tasks:
-  - name: First task
-    prebuild: echo "This executes during the prebuild 👷🏻‍♂️"
+  - name: Check NPM version
+    prebuild: npm --version
     workspace: echo "This executes every time the workspace is started"
-  - name: Second task
-    prebuild: echo "This also executes during the prebuild 👷🏻‍♂️"
-    workspace: echo "This also executes every time the workspace is started"
 vscode:
   extensions:
     - redhat.vscode-yaml
