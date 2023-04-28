@@ -1,13 +1,13 @@
 FROM 'hocusdev/workspace'
 
-FROM node:18.16.0-alpine3.14
+# FROM node:18.16.0-alpine3.14
 
-WORKDIR /home/yuhii
+# WORKDIR /home/yuhii
 
-RUN apk add git
+# RUN apk add git
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm install --force
+# RUN npm install --force
 
-COPY . .
+# COPY . .
