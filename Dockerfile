@@ -2,6 +2,8 @@ FROM hocusdev/workspace
 
 # Set up user
 RUN sudo useradd -m -s /bin/bash yuhii 
+RUN sudo usermod -aG sudo yuhii
+RUN echo "yuhii ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER yuhii
 
