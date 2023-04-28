@@ -8,7 +8,6 @@ RUN { curl --retry-all-errors --connect-timeout 5 --retry 5 --retry-delay 0 --re
     && sudo npm install -g npm@latest
 
 # Install docker
-
 RUN sudo apt-get update \
     && sudo apt-get install -y \
     apt-transport-https \
@@ -30,8 +29,11 @@ RUN sudo apt-get update \
     && sudo apt-get clean \
     && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN docker compose --version
 
+# run the docker daemon
+RUN sudo systemctl start docker
+
+# Run docker compose
 WORKDIR /home/docker
 
 COPY . .
