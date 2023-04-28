@@ -2,12 +2,6 @@ FROM hocusdev/workspace
 
 # Set up user
 RUN sudo useradd -m -s /bin/bash yuhii 
-RUN sudo usermod -aG sudo yuhii
-RUN echo "yuhii ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-USER yuhii
-
-WORKDIR /home/yuhii
 
 # Set up node
 RUN { curl --retry-all-errors --connect-timeout 5 --retry 5 --retry-delay 0 --retry-max-time 40 -fsSL https://deb.nodesource.com/setup_18.x | sudo bash -; } \
@@ -15,5 +9,9 @@ RUN { curl --retry-all-errors --connect-timeout 5 --retry 5 --retry-delay 0 --re
     && sudo apt-get clean \
     && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && sudo npm install -g npm@latest
+
+USER yuhii
+
+WORKDIR /home/yuhii
 
 RUN ["ls"]
