@@ -1,13 +1,11 @@
-FROM 'hocusdev/workspace'
+FROM hocusdev/workspace
 
-# FROM node:18.16.0-alpine3.14
+RUN { curl --retry-all-errors --connect-timeout 5 --retry 5 --retry-delay 0 --retry-max-time 40 -fsSL https://deb.nodesource.com/setup_18.x | sudo bash -; } \
+    && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y nodejs \
+    && sudo apt-get clean \
+    && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && sudo npm install -g npm@latest
 
-# WORKDIR /home/yuhii
+COPY . .
 
-# RUN apk add git
-
-# COPY package*.json ./
-
-# RUN npm install --force
-
-# COPY . .
+RUN npm install
