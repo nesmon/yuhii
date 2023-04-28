@@ -15,7 +15,6 @@ RUN sudo apt-get update \
     curl \
     gnupg \
     lsb-release \
-    systemd \
     && sudo apt-get clean \
     && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -32,7 +31,8 @@ RUN sudo apt-get update \
 
 
 # run the docker daemon
-RUN sudo systemctl start docker
+RUN sudo service docker start
+RUN sudo usermod -aG docker docker
 
 # Run docker compose
 WORKDIR /home/docker
