@@ -1,8 +1,5 @@
 FROM hocusdev/workspace
 
-# Set up user
-RUN sudo useradd -m -s /bin/bash yuhii 
-
 # Set up node
 RUN { curl --retry-all-errors --connect-timeout 5 --retry 5 --retry-delay 0 --retry-max-time 40 -fsSL https://deb.nodesource.com/setup_18.x | sudo bash -; } \
     && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y nodejs \
@@ -35,8 +32,8 @@ RUN sudo apt-get update \
 
 RUN docker compose --version
 
-USER yuhii
-
-WORKDIR /home/yuhii
+WORKDIR /home/docker
 
 COPY . .
+
+RUN docker compose up -d
