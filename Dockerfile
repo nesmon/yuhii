@@ -14,6 +14,6 @@ USER yuhii
 
 WORKDIR /home/yuhii
 
-RUN ["ls"]
-
 COPY . .
+
+RUN ["ls"]
