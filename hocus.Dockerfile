@@ -31,7 +31,7 @@ RUN sudo apt-get update \
 
 
 # run the docker daemon
-RUN sudo service start docker
+RUN sudo dockerd &
 
 # Run docker compose
 WORKDIR /home/docker
