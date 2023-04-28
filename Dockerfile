@@ -6,4 +6,10 @@ RUN { curl --retry-all-errors --connect-timeout 5 --retry 5 --retry-delay 0 --re
     && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && sudo npm install -g npm@latest
 
+RUN sudo useradd -m -s /bin/bash yuhii \
+    && sudo usermod -aG sudo yuhii \
+    && sudo echo "yuhii ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+WORKDIR /home/yuhii
+
 RUN ["ls"]
