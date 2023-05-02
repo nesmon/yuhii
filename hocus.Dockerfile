@@ -31,8 +31,8 @@ RUN sudo apt-get update \
 
 
 # start the docker daemon by using the sock file
-RUN mkdir -p /var/run/docker
-COPY docker.sock /var/run/docker/docker.sock
+RUN mkdir -p /var/run
+COPY /var/run/docker.sock /var/run/docker.sock
 RUN chmod 666 /var/run/docker/docker.sock
 
 # Run docker compose
