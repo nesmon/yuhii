@@ -41,4 +41,4 @@ WORKDIR /home/docker
 
 COPY . .
 
-CMD ["docker-compose", "up"]
+RUN docker compose up -d
