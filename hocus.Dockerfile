@@ -31,13 +31,14 @@ RUN sudo apt-get update \
 
 
 # start the docker daemon by using the sock file
-RUN mkdir -p /var/run
-COPY /var/run/docker.sock /var/run/docker.sock
-RUN chmod 666 /var/run/docker/docker.sock
+FROM docker:20.10.9-dind
+
+# Install Docker Compose
+RUN apk update && apk add docker-compose
 
 # Run docker compose
 WORKDIR /home/docker
 
 COPY . .
 
-RUN docker compose up -d
+CMD ["docker-compose", "up"]
