@@ -31,7 +31,7 @@ RUN sudo apt-get update \
 
 
 # start the docker daemon by using the sock file
-COPY /var/run/docker.sock /var/run/docker.sock
+# COPY /var/run/docker.sock /var/run/docker.sock
 
 # Run docker compose
 WORKDIR /home/docker
